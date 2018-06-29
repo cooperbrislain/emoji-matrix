@@ -18,15 +18,27 @@ app.use(express.static('/emojione-png'));
 
 app.get('/emoji/:arg', function (req, res) {
     matrix.fill(0,0,0);
+    filename = '';
     if (fs.existsSync('custom-png/' + req.params.arg + '.png')) {
         console.log(filename = 'custom-png/' + req.params.arg + '.png');
-    } else if(str = emojione.toImage(':' + req.params.arg + ': ')) {
+    } else if (str = emojione.toImage(':' + req.params.arg + ': ')) {
         console.log(filename = 'emojione-png/' + str.match(/([^/]+.png)/gius)[1]);
     }
-    child_process.exec('sudo killall led-image-viewer', function() {
-        child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
-    });
-    res.send('<image src="/' + filename + '"></image>');
+    if (filename) {
+        child_process.exec('sudo killall led-image-viewer', function() {
+            child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
+        });
+        res.send('<image src="/' + filename + '"></image>');
+    } else {
+        res.end('not found');
+    }
+});
+
+app.get('/gif/:arg', function (req, res) {
+    matrix.fill(0,0,0);
+    if (fs.existsSync('animated-gif/' + req.parameters.arg + '.gif')) {
+        console.log(filename = 'custom-gif')
+    }
 });
 
 pubsub_client.on('connect', () => {
