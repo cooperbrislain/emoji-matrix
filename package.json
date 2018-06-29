@@ -1,0 +1,18 @@
+{
+  "name": "led-matrix-emoji",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "emojione": "^3.1.6",
+    "express": "^4.16.3",
+    "mqtt": "^2.18.2",
+    "node-rpi-rgb-led-matrix": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "showemoji"
+  },
+  "author": "Cooper Brislain",
+  "license": "ISC"
+}
