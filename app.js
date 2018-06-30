@@ -37,7 +37,7 @@ app.get('/emoji/:arg', function (req, res) {
 app.get('/gif/:arg', function (req, res) {
     matrix.fill(0,0,0);
     if (fs.existsSync('animated-gif/' + req.parameters.arg + '.gif')) {
-        console.log(filename = 'custom-gif')
+        console.log(filename = 'custom-gif');
     }
 });
 
@@ -57,7 +57,7 @@ pubsub_client.on('message', function (topic, message) {
             console.log(filename = 'emojione-png/' + str.match(/([^/]+.png)/gius)[1]);
         }
         child_process.exec('sudo killall led-image-viewer', function() {
-            child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
+    g        child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
         });
     }
 });
