@@ -60,7 +60,7 @@ pubsub_client.on('message', function (topic, message) {
             console.log(filename = 'emojione-png/' + str.match(/([^/]+.png)/gius)[1]);
         }
         child_process.exec('sudo killall led-image-viewer', function() {
-    g        child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
+            child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
         });
     }
 });
