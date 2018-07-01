@@ -1,4 +1,4 @@
-var express = require('express');
+dvar express = require('express');
 var emojione = require('emojione');
 var child_process = require('child_process');
 var LedMatrix = require("node-rpi-rgb-led-matrix");
@@ -27,7 +27,7 @@ app.get('/emoji/:arg', function (req, res) {
     }
     if (filename) {
         child_process.exec('sudo killall led-image-viewer', function() {
-            child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
+            child_process.exec('sudo led-image-viewer -C ' + filename);
         });
         res.send('<image src="/' + filename + '"></image>');
     } else {
@@ -41,7 +41,7 @@ app.get('/gif/:arg', function (req, res) {
     if (fs.existsSync('animated-gif/' + req.params.arg + '.gif')) {
         console.log(filename = 'animated-gif/' + req.params.arg + '.gif');
         child_process.exec('sudo killall led-image-viewer', function() {
-            child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
+            child_process.exec('sudo led-image-viewer -C ' + filename);
         });
     }
 });
@@ -62,7 +62,7 @@ pubsub_client.on('message', function (topic, message) {
             console.log(filename = 'emojione-png/' + str.match(/([^/]+.png)/gius)[1]);
         }
         child_process.exec('sudo killall led-image-viewer', function() {
-            child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
+            child_process.exec('sudo led-image-viewer -C ' + filename);
         });
     }
     if (topic === '/led-matrix/settings/rotation') {
