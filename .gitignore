@@ -1,4 +1,8 @@
 node_modules/*
 ._DS_Store
 .secret
-led-image-viewer
+led-image-viewer/*
+custom-png/*
+emojione-png/*
+animated-gif/*
+package-lock.json
