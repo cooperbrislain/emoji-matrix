@@ -3,6 +3,7 @@ var emojione = require('emojione');
 var child_process = require('child_process');
 var LedMatrix = require("node-rpi-rgb-led-matrix");
 var mqtt = require("mqtt");
+var json = require("json");
 var fs = require('fs');
 
 var matrix = new LedMatrix(32);
@@ -63,6 +64,10 @@ pubsub_client.on('message', function (topic, message) {
         child_process.exec('sudo killall led-image-viewer', function() {
             child_process.exec('sudo led-image-viewer -C --led-pixel-mapper "U-mapper;Rotate:270" ' + filename);
         });
+    }
+    if (topic === '/led-matrix/settings/rotation') {
+        console.log('Setting matrix rotation to ' + message + '...');
+        matrix.rotate(message);
     }
 });
 
