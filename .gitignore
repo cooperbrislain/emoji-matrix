@@ -1,0 +1,4 @@
+node_modules/*
+._DS_Store
+.secret
+led-image-viewer
