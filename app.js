@@ -1,4 +1,4 @@
-dvar express = require('express');
+var express = require('express');
 var emojione = require('emojione');
 var child_process = require('child_process');
 var LedMatrix = require("node-rpi-rgb-led-matrix");
